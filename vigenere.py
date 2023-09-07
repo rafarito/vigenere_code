@@ -7,6 +7,7 @@ class Viginere:
         self.setAlphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
 
     def setAlphabet(self, alph : str):
+        alph.upper()
         self.alphabet = alph
 
     def getAlphabet(self):
@@ -19,8 +20,15 @@ class Viginere:
                     return
         raise Exception ("letra não consta no alphabeto")
 
-    
-    def decode(self ,key: str, cypher:str):
+    def operacao(self, op : str, text : str ,key = ""):
+        if op == "Decriptar":
+            return self.decode(key=key, cypher=text)
+        elif op == "Encriptar":
+            return self.encode(key=key,text=text)
+        elif op == "Mudar Alfabeto":
+            return self.setAlphabet(text)
+
+    def decode(self ,key : str, cypher:str):
         key = key.upper()
         key = key.replace(" ","")
         cypher = cypher.upper()
